@@ -1,0 +1,59 @@
+#USE "aiav" CONDA ENVIRONMENT
+# Core dependencies for Ultimate Instagram Automation System
+# Updated for Gemini API, Perplexity API, and local Ollama embeddings
+
+# Workflow and orchestration
+prefect
+
+# HTTP and networking
+requests
+aiohttp
+
+# Environment and configuration
+python-dotenv
+
+# Monitoring (optional)
+sentry-sdk
+
+# Image processing
+pillow
+
+# Web scraping and content extraction
+beautifulsoup4
+selenium
+webdriver-manager
+feedparser
+
+# Database and embeddings
+chromadb
+
+# AI and Machine Learning (Updated for your setup)
+google-generativeai              # Gemini AI - YOUR PRIMARY AI
+scikit-learn                     # ML models for engagement prediction
+numpy                           # Numerical computations
+pandas                          # Data manipulation
+
+# Instagram automation
+instagrapi
+
+# Scheduling
+schedule
+
+# Trend detection
+pytrends
+tweepy                          # Twitter API for trend detection
+yfinance                        # Yahoo Finance for market trends
+
+# Text analysis
+textblob                        # Sentiment analysis and NLP
+textstat                        # Text readability metrics
+
+# Web framework (for dashboard)
+flask                           # Lightweight web framework
+
+# Utilities
+tqdm
+colorama
+
+# Note: No OpenAI or sentence-transformers needed
+# Using Ollama for local embeddings instead
