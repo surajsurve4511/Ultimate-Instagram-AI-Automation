@@ -1,0 +1,43 @@
+graph TB
+    subgraph "📡 Data Collection Layer"
+        SC[scraping/content_scraper.py]
+        TD[trends/trend_detector.py<br/>8 sources: Google, Reddit, GitHub,<br/>Twitter, News, Research, Crypto, Jobs]
+        PR[research/perplexity.py<br/>Perplexity API research]
+    end
+
+    subgraph "🧠 Intelligence Layer"
+        CC[content/curator.py<br/>Quality filtering & selection]
+        QF[quality/content_filter.py<br/>Readability, sentiment, safety]
+        VDB[vectordb/content_db.py<br/>ChromaDB deduplication]
+        DB[database/vector_store.py<br/>Persistent vector store]
+        EMB[embeddings/ollama_service.py<br/>Ollama local embeddings]
+    end
+
+    subgraph "🎨 Content Generation Layer"
+        GEN[generation/gemini.py<br/>Gemini Pro text + image]
+        ACG[creative/advanced_content.py<br/>10 creative formats]
+        MAI[creative/future_ai.py<br/>Multi-modal + AI personas]
+    end
+
+    subgraph "🔥 Viral & Crowd Layer"
+        VCG[viral/content_strategies.py<br/>10 viral strategies]
+        RCM[crowd/revolutionary_attraction.py<br/>10 crowd magnet strategies]
+        AEO[analytics/engagement_optimizer.py<br/>ML engagement prediction]
+    end
+
+    subgraph "📤 Publishing Layer"
+        IP[posting/instagram_poster.py<br/>instagrapi posting]
+        ORC[orchestrator/ + orchestration/<br/>Scheduling & campaign mgmt]
+        MON[monitoring/dashboard.py<br/>Flask dashboard]
+    end
+
+    SC --> CC
+    TD --> CC
+    PR --> CC
+    CC --> QF --> VDB --> GEN
+    EMB --> VDB
+    GEN --> ACG --> VCG
+    VCG --> RCM --> AEO
+    AEO --> IP
+    ORC --> IP
+    MON --> ORC
