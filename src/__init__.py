@@ -1,12 +1,16 @@
 """
-Ultimate Instagram Automation System
-Main package initialization
+Ultimate Instagram AI Automation System
+Main package initialization — Multi-User Product Architecture
 """
-__version__ = '1.0.0'
-__author__ = 'Ultimate AI Team'
 
-# Import main components for easy access
-from .config import SETTINGS
-from .orchestration import UltimateCrowdMaster
+__version__ = "2.0.0"
+__author__ = "Ultimate AI Team"
 
-__all__ = ['SETTINGS', 'UltimateCrowdMaster', '__version__']
+# Note: We don't import heavy modules here to avoid circular imports
+# and to keep startup fast. Import what you need directly:
+#
+#   from src.config.settings import SETTINGS
+#   from src.database import User, InstagramAccount, get_session
+#   from src.auth.auth_service import create_access_token
+
+__all__ = ["__version__"]

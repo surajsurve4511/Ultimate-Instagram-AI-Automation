@@ -1,59 +1,76 @@
-#USE "aiav" CONDA ENVIRONMENT
-# Core dependencies for Ultimate Instagram Automation System
-# Updated for Gemini API, Perplexity API, and local Ollama embeddings
+# ============================================================
+# Ultimate Instagram AI Automation — Dependencies
+# Gemini-only AI + Official Instagram Graph API + Multi-User
+# ============================================================
 
-# Workflow and orchestration
-prefect
+# ========== Core AI — Gemini API (Official SDK) ==========
+# Docs: https://ai.google.dev/gemini-api/docs
+google-genai>=1.0.0                  # Official Gemini Python SDK (google.genai)
 
-# HTTP and networking
-requests
-aiohttp
+# ========== Vector Database ==========
+chromadb>=0.4.0                      # Local vector store for memory/embeddings
 
-# Environment and configuration
-python-dotenv
+# ========== Database & ORM ==========
+sqlalchemy[asyncio]>=2.0.0           # Async ORM for multi-user data
+alembic>=1.13.0                      # Database migrations
+aiosqlite>=0.20.0                    # Async SQLite driver (dev)
+asyncpg>=0.29.0                      # Async PostgreSQL driver (production)
 
-# Monitoring (optional)
-sentry-sdk
+# ========== Web Framework ==========
+# Docs: https://fastapi.tiangolo.com
+fastapi>=0.110.0                     # Async API framework
+uvicorn[standard]>=0.27.0            # ASGI server
+python-multipart>=0.0.7              # Form data parsing for file uploads
 
-# Image processing
-pillow
+# ========== HTTP Client ==========
+httpx>=0.27.0                        # Async HTTP for Instagram Graph API calls
 
-# Web scraping and content extraction
-beautifulsoup4
-selenium
-webdriver-manager
-feedparser
+# ========== Authentication & Security ==========
+pyjwt>=2.8.0                         # JWT tokens for multi-user auth
+cryptography>=42.0.0                 # Fernet encryption for stored tokens
+passlib[bcrypt]>=1.7.4               # Password hashing
+python-jose[cryptography]>=3.3.0     # JOSE/JWT with crypto backend
 
-# Database and embeddings
-chromadb
+# ========== Scheduling ==========
+apscheduler>=3.10.0                  # Robust async-compatible scheduler
 
-# AI and Machine Learning (Updated for your setup)
-google-generativeai              # Gemini AI - YOUR PRIMARY AI
-scikit-learn                     # ML models for engagement prediction
-numpy                           # Numerical computations
-pandas                          # Data manipulation
+# ========== Image Processing ==========
+pillow>=10.0.0                       # Image format conversion (JPEG for IG)
 
-# Instagram automation
-instagrapi
+# ========== Data & ML ==========
+numpy>=1.26.0                        # Numerical operations
+pandas>=2.1.0                        # Data analysis for analytics
+pydantic>=2.5.0                      # Data validation & structured output schemas
 
-# Scheduling
-schedule
+# ========== Environment & Config ==========
+python-dotenv>=1.0.0                 # .env file loading
 
-# Trend detection
-pytrends
-tweepy                          # Twitter API for trend detection
-yfinance                        # Yahoo Finance for market trends
+# ========== Utilities ==========
+tqdm>=4.66.0                         # Progress bars
+colorama>=0.4.6                      # Colored terminal output
+aiofiles>=23.2.0                     # Async file operations
 
-# Text analysis
-textblob                        # Sentiment analysis and NLP
-textstat                        # Text readability metrics
+# ========== Testing ==========
+pytest>=8.0.0                        # Test framework
+pytest-asyncio>=0.23.0               # Async test support
+pytest-httpx>=0.30.0                 # Mock httpx requests in tests
 
-# Web framework (for dashboard)
-flask                           # Lightweight web framework
-
-# Utilities
-tqdm
-colorama
-
-# Note: No OpenAI or sentence-transformers needed
-# Using Ollama for local embeddings instead
+# ========== REMOVED (no longer needed) ==========
+# instagrapi          — REMOVED: replaced by official Instagram Graph API
+# google-generativeai — REMOVED: replaced by google-genai (new SDK)
+# beautifulsoup4      — REMOVED: replaced by Gemini + Google Search grounding
+# selenium            — REMOVED: no web scraping needed
+# webdriver-manager   — REMOVED: no web scraping needed
+# feedparser          — REMOVED: no RSS scraping needed
+# pytrends            — REMOVED: replaced by Google Search grounding
+# tweepy              — REMOVED: no Twitter API needed
+# yfinance            — REMOVED: no finance data needed
+# textblob            — REMOVED: Gemini handles sentiment analysis
+# textstat            — REMOVED: Gemini handles text quality analysis
+# flask               — REMOVED: replaced by FastAPI
+# schedule            — REMOVED: replaced by APScheduler
+# scikit-learn        — REMOVED: Gemini replaces ML models
+# prefect             — REMOVED: replaced by APScheduler
+# sentry-sdk          — REMOVED: will add back when deploying to production
+# requests            — REMOVED: replaced by httpx (async)
+# aiohttp             — REMOVED: replaced by httpx (async)
